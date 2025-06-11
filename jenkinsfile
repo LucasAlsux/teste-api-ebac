@@ -10,8 +10,8 @@ pipeline {
         }
         stage('test') {
             steps {
-               bat 'set NO_COLOR=1'
-               bat 'npm test'
+               bat '''set NO_COLOR=1
+                npm test'''
             }
         }
     }
