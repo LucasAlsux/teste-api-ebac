@@ -10,7 +10,7 @@ pipeline {
         }
         stage('Subir servidor') {
             steps {
-                bat 'npm start'
+                bat 'start /b npx serverest'
             }
 
         }        
