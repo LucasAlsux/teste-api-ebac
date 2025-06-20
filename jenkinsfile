@@ -8,11 +8,18 @@ pipeline {
              bat 'npm install'
             }
         }
+        stage('Subir servidor') {
+            steps {
+                bat 'start /b npm start'
+            }
+
+        }        
         stage('test') {
             steps {
                bat '''set NO_COLOR=1
                 npm test'''
             }
         }
+
     }
 }
