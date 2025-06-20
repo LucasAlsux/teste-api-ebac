@@ -16,7 +16,7 @@ describe('Testes da Funcionalidade Produtos', () => {
     it('Deve listar os produtos cadastrados', () => {
         cy.request({
             method: 'GET',
-            url: 'produtos'
+            url: '/produtos'
         }).then((response) => {
             //expect(response.body.produtos[9].nome).to.equal('Produto EBAC 436746')
             expect(response.status).to.equal(200)
@@ -29,7 +29,7 @@ describe('Testes da Funcionalidade Produtos', () => {
         let produto = `Produto EBAC ${Math.floor(Math.random() * 100000000)}`
         cy.request({
             method: 'POST',
-            url: 'produtos',
+            url: '/produtos',
             body: {
                 "nome": produto,
                 "preco": 200,
@@ -56,7 +56,7 @@ describe('Testes da Funcionalidade Produtos', () => {
             let id = response.body.produtos[0]._id
             cy.request({
                 method: 'PUT', 
-                url: `produtos/${id}`,
+                url: `/produtos/${id}`,
                 headers: {authorization: token}, 
                 body: 
                 {
@@ -79,7 +79,7 @@ describe('Testes da Funcionalidade Produtos', () => {
 
             cy.request({
                 method: 'PUT', 
-                url: `produtos/${id}`,
+                url: `/produtos/${id}`,
                 headers: {authorization: token}, 
                 body: 
                 {
@@ -101,7 +101,7 @@ describe('Testes da Funcionalidade Produtos', () => {
             let id = response.body._id
             cy.request({
                 method: 'DELETE',
-                url: `produtos/${id}`,
+                url: `/produtos/${id}`,
                 headers: {authorization: token}
             }).then(response =>{
                 expect(response.body.message).to.equal('Registro excluído com sucesso')

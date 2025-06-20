@@ -13,7 +13,7 @@ describe('Testes da Funcionalidade Usuários', () => {
   it('Deve listar usuários cadastrados - GET', () => {
     cy.request({
       method: 'GET',
-      url: 'usuarios',
+      url: '/usuarios',
     }).should((resposta => {
       expect(resposta.status).to.equal(200)
     }))
@@ -30,7 +30,7 @@ describe('Testes da Funcionalidade Usuários', () => {
   it('Deve validar um usuário com email inválido', () => {
     cy.request({
       method: 'GET',
-      url: 'usuarios/1bFocrZMAecabOv7',
+      url: '/usuarios/1bFocrZMAecabOv7',
       failOnStatusCode: false
     }) 
     .should((email) =>{
@@ -42,7 +42,7 @@ describe('Testes da Funcionalidade Usuários', () => {
   it('Deve editar um usuário previamente cadastrado', () => {
       cy.request({
         method: 'PUT',
-        url: 'usuarios/HWGQQuzL4t5dxxbT',
+        url: '/usuarios/HWGQQuzL4t5dxxbT',
         body:{
         "nome": "arthur 1",
         "email": "arthur@qa.com.br",
@@ -58,7 +58,7 @@ describe('Testes da Funcionalidade Usuários', () => {
   it('Deve deletar um usuário previamente cadastrado', () => {
       cy.request({
         method: 'DELETE',
-        url:'usuarios/BZaiZlo4i8yYvSjZ'
+        url:'/usuarios/BZaiZlo4i8yYvSjZ'
     })
     .should((resposta) =>{
     expect(resposta.body.message).to.equal('Registro excluído com sucesso')

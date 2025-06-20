@@ -1,7 +1,7 @@
 Cypress.Commands.add('token', (email, senha) => {
     cy.request({
         method: 'POST',
-        url: 'login',
+        url: '/login',
         body: {
             "email": email,
             "password": senha 
@@ -15,7 +15,7 @@ Cypress.Commands.add('token', (email, senha) => {
  Cypress.Commands.add('cadastrarProduto' , (token, produto, preco, descricao, quantidade) =>{
     cy.request({
         method: 'POST', 
-        url: 'produtos',
+        url: '/produtos',
         headers: {authorization: token}, 
         body: {
             "nome": produto,
@@ -30,7 +30,7 @@ Cypress.Commands.add('token', (email, senha) => {
  Cypress.Commands.add('cadastrarUsuario' , (nome, email, password, administrador) =>{
     cy.request({
     method: 'POST',
-    url:'usuarios',
+    url:'/usuarios',
     body:{
         "nome": nome,
         "email": email,
